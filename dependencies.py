@@ -28,9 +28,9 @@ async def connect_driver(docker: bool = False):
 
 
 async def get_user_photos(username: str, max_count: int) -> list:
-    driver = await connect_driver()
+    driver = await connect_driver(docker=True)
     driver.get(f"https://www.instagram.com/{username}/")
-    await sleep(1)
+    await sleep(3)
     photos = []
     elements = driver.find_elements(By.XPATH, '//div[@class="_aabd _aa8k  _al3l"]')
     for element in elements:
